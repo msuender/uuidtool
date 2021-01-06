@@ -220,7 +220,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
 <Container>
     <Row>
         <Col class="mr-auto">
-            <Button color="primary" disabled={!input1IsJson && !input2IsJson} on:click={findUuidsInInput}>Finde UUIDs</Button>
+            <Button color="primary" disabled={!input1IsJson && !input2IsJson && !input3IsJson} on:click={findUuidsInInput}>Finde UUIDs</Button>
             <Button color="secondary" on:click={() => clearOrCopy('clear')}>Reset</Button>
         </Col>
     </Row>
