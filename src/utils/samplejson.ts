@@ -1,5 +1,3 @@
-
-
 export const sampleJSON1: object = {
   meilenstein: "c95a5bfa-e3e2-4f44-a2df-ac40f9426bf7",
   transporte: [
