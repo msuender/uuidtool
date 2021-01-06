@@ -15,7 +15,7 @@
         } else {
             var charSeparator = ".";
             var paths = [];
-            var i=0;
+            var i = 0;
             
             for(var curr in obj){
                 var currElem = obj[curr];
@@ -23,7 +23,6 @@
                 if( typeof currElem == "object" ){ // object is "object" and "array" is also in the eyes of "typeof"
                     // search again but set paramter to remember if daddy was an Array 
 
-                    var daddyIsArray = Array.isArray(currElem);
                     var deepPaths = getValuePathInObject( currElem, maxDeepLevel, currDeepLevel + 1)
                     
                     for(var e=0 ; e<deepPaths.length ; e++){

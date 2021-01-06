@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { Navbar, NavbarBrand, Badge, Col, Container, Row} from "sveltestrap";
 	import Jsoninput from './Jsoninput.svelte';
 </script>
