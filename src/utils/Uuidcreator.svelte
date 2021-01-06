@@ -1,4 +1,5 @@
 <script context="module">
+// @ts-check
     
     export const createUuid =  () => {    
     var uuid = "", i, random;    

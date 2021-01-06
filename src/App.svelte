@@ -10,7 +10,7 @@
 
 <Navbar color="primary" dark expand="md">
 	<NavbarBrand>
-		UUIDTool <Badge class="badge-pill">V0.5</Badge>
+		UUIDTool <Badge class="badge-pill">V0.6</Badge>
 	</NavbarBrand>
 </Navbar>
 

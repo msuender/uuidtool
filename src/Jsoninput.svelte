@@ -1,11 +1,11 @@
 <script>
+// @ts-check
 
   import { Container, Row, Col, Button, Form, FormGroup, FormText, Input, Label, Jumbotron, ListGroup, ListGroupItem } from "sveltestrap";
   
   import Uuidfinder, {findUuids} from './utils/Uuidfinder.svelte';
   import Uuidcreator, {createUuid} from './utils/Uuidcreator.svelte';
-  import Samplejson, {sampleJSON1, sampleJSON2, sampleJSON3} from './utils/Samplejson.svelte';
-  
+  import {sampleJSON1, sampleJSON2, sampleJSON3} from './utils/samplejson.js';
   
   let textInput1;
   let textInput2;
