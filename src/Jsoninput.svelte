@@ -1,7 +1,7 @@
 <script>
 // @ts-check
 
-  import { Container, Row, Col, Button, Form, FormGroup, FormText, Input, Label, Jumbotron, ListGroup, ListGroupItem } from "sveltestrap";
+  import { Alert, Container, Row, Col, Button, Form, FormGroup, FormText, Input, Label, Jumbotron, ListGroup, ListGroupItem } from "sveltestrap";
   
   import {findUuids} from './utils/uuidfinder'
   import {createUuid} from './utils/uuidcreator';
@@ -17,6 +17,7 @@
   let outputObj1;
   let outputObj2;
   let outputObj3;
+  let alertVisible = false;
 
   const clearOrCopy = (whatToDo) => {
 
@@ -29,6 +30,7 @@
             textInput1 = "";
             textInput2 = "";
             textInput3 = "";
+            alertVisible = false;
       }
 
     uuidsFound = {};
@@ -60,6 +62,8 @@
 
   const findUuidsInInput = () => {
       uuidsFound = findUuids(inputJson);
+
+      if (Object.keys(uuidsFound).length === 0) alertVisible = true;
   }
 
   $: availableUuids = Object.keys(uuidsFound);
@@ -222,9 +226,13 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
             <Button color="secondary" on:click={() => clearOrCopy('clear')}>Reset</Button>
         </Col>
     </Row>
+
     <Row>
         <Col class="mt-4">
             <h5>Found UUIDs and their path:</h5>
+            <Alert color="warning" isOpen={alertVisible} toggle={() => (alertVisible = false)}>
+                No UUIDs found. Please correct your input and try again!
+            </Alert>
             <ul>
                 {#each uuidsFoundArray as mainItem}
                     <li>{mainItem.uuid}
@@ -254,7 +262,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
         <Col>
             <div class="form-group">
                 <h5>Select the UUIDs to replaced:</h5>
-                <select class="form-control" multiple bind:value={uuidsToReplace} size={availableUuids.length} style="width: 100%;">
+                <select class="form-control" multiple bind:value={uuidsToReplace} size={availableUuids.length} disabled={availableUuids.length === 0} style="width: 100%;">
                     {#each availableUuids as uuid}
                         <option value={uuid}>
                             {uuid}
