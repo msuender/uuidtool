@@ -3,7 +3,7 @@
 
   import { Container, Row, Col, Button, Form, FormGroup, FormText, Input, Label, Jumbotron, ListGroup, ListGroupItem } from "sveltestrap";
   
-  import Uuidfinder, {findUuids} from './utils/Uuidfinder.svelte';
+  import {findUuids} from './utils/uuidfinder'
   import {createUuid} from './utils/uuidcreator';
   import {sampleJSON1, sampleJSON2, sampleJSON3} from './utils/samplejson';
   
@@ -19,8 +19,6 @@
   let outputObj3;
 
   const clearOrCopy = (whatToDo) => {
-
-      console.log("clearorcopy");
 
       if (whatToDo === 'copy') {
             let newInputJson = JSON.parse(JSON.stringify(outputJson));
