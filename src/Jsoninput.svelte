@@ -5,7 +5,7 @@
   
   import Uuidfinder, {findUuids} from './utils/Uuidfinder.svelte';
   import {createUuid} from './utils/uuidcreator';
-  import {sampleJSON1, sampleJSON2, sampleJSON3} from './utils/samplejson.js';
+  import {sampleJSON1, sampleJSON2, sampleJSON3} from './utils/samplejson';
   
   let textInput1;
   let textInput2;
