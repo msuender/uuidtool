@@ -1,5 +1,5 @@
   
-export const createUuid =  (): String => {    
+export const createUuid =  (): string => {    
 let uuid: string = "", i: number, random: any;    
 
 for (i = 0; i < 32; i++) {      

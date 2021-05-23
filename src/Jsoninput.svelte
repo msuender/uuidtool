@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 // @ts-check
 
   import { Alert, Container, Row, Col, Button, Form, FormGroup, FormText, Input, Label, Jumbotron, ListGroup, ListGroupItem } from "sveltestrap";
@@ -6,23 +6,25 @@
   import {findUuids} from './utils/uuidfinder'
   import {createUuid} from './utils/uuidcreator';
   import {sampleJSON1, sampleJSON2, sampleJSON3} from './utils/samplejson';
+  import type {IUuidsFoundItem, IInputOutputJson, IResultSet} from './utils/utils'
+  import {EWhatToDo, EInputFields} from './utils/utils'
   
-  let textInput1;
-  let textInput2;
-  let textInput3;
-  let inputJson = {"input1": {}, "input2": {}, "input3": {}};
-  let uuidsFound = {};
-  let uuidsToReplace = [];
-  let outputJson = {"input1": {}, "input2": {}, "input3": {}};
-  let outputObj1;
-  let outputObj2;
-  let outputObj3;
-  let alertVisible = false;
+  let textInput1: string;
+  let textInput2: string;
+  let textInput3: string;
+  let inputJson: IInputOutputJson = {"input1": {}, "input2": {}, "input3": {}};
+  let uuidsFound = {} as IResultSet;
+  let uuidsToReplace: string[] = [];
+  let outputJson: IInputOutputJson = {"input1": {}, "input2": {}, "input3": {}};
+  let outputObj1: string;
+  let outputObj2: string;
+  let outputObj3: string;
+  let alertVisible: boolean = false;
 
-  const clearOrCopy = (whatToDo) => {
+  const clearOrCopy = (whatToDo: EWhatToDo): void => {
 
-      if (whatToDo === 'copy') {
-            let newInputJson = JSON.parse(JSON.stringify(outputJson));
+      if (whatToDo === EWhatToDo.copy) {
+            let newInputJson: IInputOutputJson = JSON.parse(JSON.stringify(outputJson));
             textInput1 = JSON.stringify(newInputJson.input1, null, 2);
             textInput2 = JSON.stringify(newInputJson.input2, null, 2);
             textInput3 = JSON.stringify(newInputJson.input3, null, 2);
@@ -39,28 +41,30 @@
   }
 
 
-  $: input1IsJson = isJSON(textInput1, "input1");
-  $: input2IsJson = isJSON(textInput2, "input2");
-  $: input3IsJson = isJSON(textInput3, "input3");
+  $: input1IsJson = isJSON(textInput1, EInputFields.input1);
+  $: input2IsJson = isJSON(textInput2, EInputFields.input2);
+  $: input3IsJson = isJSON(textInput3, EInputFields.input3);
 
-  const isJSON = (textToCheck, field) => {
+  const isJSON = (textToCheck: string, field: EInputFields): boolean => {
 
-       try { JSON.parse(textToCheck); 
-            inputJson[field] = JSON.parse(textToCheck);
-            return true; } 
+       try { 
+           JSON.parse(textToCheck); 
+           inputJson[field] = JSON.parse(textToCheck);
+           return true; 
+        } 
        catch (e) { 
            inputJson[field] = {};
            return false;
         } 
   };
 
-  const setSampleInput = () => {
+  const setSampleInput = (): void => {
       textInput1 = JSON.stringify(sampleJSON1, null, 2);
       textInput2 = JSON.stringify(sampleJSON2, null, 2);
       textInput3 = JSON.stringify(sampleJSON3, null, 2);
   }
 
-  const findUuidsInInput = () => {
+  const findUuidsInInput = (): void => {
       uuidsFound = findUuids(inputJson);
 
       if (Object.keys(uuidsFound).length === 0) alertVisible = true;
@@ -72,14 +76,14 @@
 
   const uuidsFoundToArray = (availableUuidsInput) => {
 
-      let workArray = [];
+      let workArray: IUuidsFoundItem[] = [];
 
       for (var item in availableUuidsInput) {
 
-          let workItem = {};
+          let workItem = {} as IUuidsFoundItem;
 
           workItem.uuid = availableUuidsInput[item];
-          workItem.path = uuidsFound[availableUuidsInput[item]].paths;
+          workItem.paths = uuidsFound[availableUuidsInput[item]].paths;
 
           workArray.push(workItem);
 
@@ -93,16 +97,16 @@
   const replaceUuids = () => {
 
       //deep cloning absolutely needed
-      const workJSON = JSON.parse(JSON.stringify(inputJson));
+      const workJSON: IInputOutputJson = JSON.parse(JSON.stringify(inputJson));
 
       for (var item in selectedUuids) {
 
-          let allPaths = uuidsFound[selectedUuids[item]].paths;
-          let newUuid = createUuid();
+          let allPaths: string [] = uuidsFound[selectedUuids[item]].paths;
+          let newUuid: string = createUuid();
           
           for (var pathItem in allPaths) {
 
-            let splitter = allPaths[pathItem].split('.');
+            let splitter: string[] = allPaths[pathItem].split('.');
 
                 switch (splitter.length) {
                 case 1: workJSON[splitter[0]] = newUuid; break;
@@ -152,7 +156,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
             <Button color="secondary" on:click={setSampleInput}>Sample JSON</Button>
         </Col>
         <Col>
-            <Button color="info" on:click={() => clearOrCopy('copy')} class="accent-button">Copy Output to Input</Button>
+            <Button color="info" on:click={() => clearOrCopy(EWhatToDo.copy)} class="accent-button">Copy Output to Input</Button>
         </Col>
     </Row>
 </Container>
@@ -223,7 +227,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
     <Row>
         <Col class="mr-auto">
             <Button color="primary" disabled={!input1IsJson && !input2IsJson && !input3IsJson} on:click={findUuidsInInput}>Finde UUIDs</Button>
-            <Button color="secondary" on:click={() => clearOrCopy('clear')}>Reset</Button>
+            <Button color="secondary" on:click={() => clearOrCopy(EWhatToDo.clear)}>Reset</Button>
         </Col>
     </Row>
 
@@ -237,7 +241,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
                 {#each uuidsFoundArray as mainItem}
                     <li>{mainItem.uuid}
                         <ul>
-                            {#each mainItem.path as subItem}
+                            {#each mainItem.paths as subItem}
                                 <li>{subItem}</li>
                             {/each}
                         </ul>
