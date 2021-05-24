@@ -135,7 +135,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
 
 </style>
 
-<Container class="mt-4">
+<Container>
     <Row>
         <Col>
             <Button color="secondary" on:click={setSampleInput}>Sample JSON</Button>
@@ -148,7 +148,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
 
 <hr>
 
-<Container class="maxsize">
+<Container>
     <Row>
         <Col>
             <FormGroup>
