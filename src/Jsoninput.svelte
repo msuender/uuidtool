@@ -135,7 +135,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
 
 </style>
 
-<Container>
+<Container class="mt-3">
     <Row>
         <Col>
             <Button color="secondary" on:click={setSampleInput}>Sample JSON</Button>
@@ -215,9 +215,8 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
             <Button color="secondary" on:click={() => clearOrCopy(EWhatToDo.clear)}>Reset</Button>
         </Col>
     </Row>
-
     <Row>
-        <Col class="mt-4">
+        <Col class="mt-3">
             <h5>Found UUIDs and their path:</h5>
             <Alert color="warning" isOpen={alertVisible} toggle={() => (alertVisible = false)}>
                 No UUIDs found. Please correct your input and try again!
@@ -261,7 +260,7 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
             </div>
         </Col>
     </Row>
-    <Row>
+    <Row class="mt-3">
         <Col>
             <Button disabled={uuidsToReplace.length === 0} on:click={replaceUuids} color="success">Replace selected</Button>
         </Col>
