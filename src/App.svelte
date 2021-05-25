@@ -17,6 +17,5 @@
 <Jsoninput/>
 
 <svelte:head>
-	<!-- TODO check for Bootstrap 5 version! <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/> -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.1/dist/cosmo/bootstrap.min.css"/>
 </svelte:head>
