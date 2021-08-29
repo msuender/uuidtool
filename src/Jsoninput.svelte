@@ -1,7 +1,6 @@
 <script lang="ts">
-// @ts-check
-
-  import { Alert, Container, Row, Col, Button, Form, FormGroup, FormText, Input, Label, Jumbotron, ListGroup, ListGroupItem } from "sveltestrap";
+  // @ts-ignore
+  import { Alert, Container, Row, Col, Button, FormGroup, Input, Label } from "sveltestrap";
   
   import {findUuids} from './utils/uuidfinder'
   import {createUuid} from './utils/uuidcreator';
@@ -74,7 +73,7 @@
 
   $: uuidsFoundArray = uuidsFoundToArray(availableUuids);
 
-  const uuidsFoundToArray = (availableUuidsInput) => {
+  const uuidsFoundToArray = (availableUuidsInput: string[]) => {
 
       let workArray: IUuidsFoundItem[] = [];
 
@@ -153,14 +152,14 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
         <Col>
             <FormGroup>
                 <Label for="input1">Input 1</Label>
-                <Input class="font-monospace text-small" type="textarea" name="Input1" id="input1" bind:value={textInput1} cols="1" rows="20" placeholder="Paste your JSON here!" style="font-size: 80%;"/>
+                <Input class="font-monospace text-small" type="textarea" name="Input1" id="input1" bind:value={textInput1} cols={1} rows={20} placeholder="Paste your JSON here!" style="font-size: 80%;"/>
             </FormGroup>
             Is it a JSON? {input1IsJson}
         </Col>
         <Col>
             <FormGroup>
                 <Label for="output1">Output 1</Label>
-                <Input class="font-monospace" type="textarea" name="Output1" id="output1" bind:value={outputObj1} cols="1" rows="20" readonly style="font-size: 80%;"/>
+                <Input class="font-monospace" type="textarea" name="Output1" id="output1" bind:value={outputObj1} cols={1} rows={20} readonly style="font-size: 80%;"/>
             </FormGroup>
         </Col>
     </Row>
@@ -173,14 +172,14 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
         <Col>
             <FormGroup>
                 <Label for="input2">Input 2</Label>
-                <Input class="font-monospace" type="textarea" name="Input2" id="input2" bind:value={textInput2} cols="1" rows="20" placeholder="Paste your JSON here!" style="font-size: 80%;"/>
+                <Input class="font-monospace" type="textarea" name="Input2" id="input2" bind:value={textInput2} cols={1} rows={20} placeholder="Paste your JSON here!" style="font-size: 80%;"/>
             </FormGroup>
             Is it a JSON? {input1IsJson}
         </Col>
         <Col>
             <FormGroup>
                 <Label for="output2">Output 2</Label>
-                <Input class="font-monospace" type="textarea" name="Output2" id="output2" bind:value={outputObj2} cols="1" rows="20" readonly style="font-size: 80%;"/>
+                <Input class="font-monospace" type="textarea" name="Output2" id="output2" bind:value={outputObj2} cols={1} rows={20} readonly style="font-size: 80%;"/>
             </FormGroup>
         </Col>
     </Row>
@@ -193,14 +192,14 @@ $: outputObj3 = JSON.stringify(outputJson.input3, null, 2);
         <Col>
             <FormGroup>
                 <Label for="input3">Input 3</Label>
-                <Input class="font-monospace" type="textarea" name="Input3" id="input3" bind:value={textInput3} cols="1" rows="20" placeholder="Paste your JSON here!" style="font-size: 80%;"/>
+                <Input class="font-monospace" type="textarea" name="Input3" id="input3" bind:value={textInput3} cols={1} rows={20} placeholder="Paste your JSON here!" style="font-size: 80%;"/>
             </FormGroup>
             Is it a JSON? {input1IsJson}
         </Col>
         <Col>
             <FormGroup>
                 <Label for="output2">Output 3</Label>
-                <Input class="font-monospace" type="textarea" name="Output3" id="output3" bind:value={outputObj3} cols="1" rows="20" readonly style="font-size: 80%;"/>
+                <Input class="font-monospace" type="textarea" name="Output3" id="output3" bind:value={outputObj3} cols={1} rows={20} readonly style="font-size: 80%;"/>
             </FormGroup>
         </Col>
     </Row>

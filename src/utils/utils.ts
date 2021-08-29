@@ -8,13 +8,13 @@ export interface IResultSet {
 }
 
 export interface IUuidsFoundItem {
-    uuid: string,
+    uuid: string;
     paths: string[]
 }
 
 export interface IInputOutputJson {
-    input1: object,
-    input2?: object,
+    input1: object;
+    input2?: object;
     input3?: object
 }
 
