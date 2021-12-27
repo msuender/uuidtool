@@ -43,7 +43,7 @@ export default {
 			preprocess: sveltePreprocess(),
 			compilerOptions: {
 				// enable run-time checks when not in production
-				dev: !production
+				dev: true
 			}
 		}),
 		// we'll extract any component CSS out into
@@ -61,7 +61,7 @@ export default {
 		}),
 		commonjs(),
 		typescript({
-			sourceMap: !production,
+			sourceMap: true,
 			inlineSources: !production
 		}),
 
