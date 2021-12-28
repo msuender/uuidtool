@@ -13,7 +13,6 @@ export const getValuePathInObject = (obj: object, maxDeepLevel: number, currDeep
     } else {
         var charSeparator: string = ".";
         var paths: string[] = [];
-        var i: number = 0;
         
         for (var curr in obj) {
             var currElem = obj[curr];
@@ -35,7 +34,6 @@ export const getValuePathInObject = (obj: object, maxDeepLevel: number, currDeep
                     paths.push( curr + ';;' + currElem );
                 }
             }
-            i++;
         }
         return paths;
     }
