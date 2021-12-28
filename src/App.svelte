@@ -10,17 +10,17 @@
 
 <Navbar color="primary" dark expand="md">
 	<NavbarBrand>
-		UUIDTool <Badge class="badge-pill">V0.6</Badge>
-		<Icon id="page-info" name="info-circle"/>
-		<Popover
-    		trigger="hover"
-    		placement="right"
-    		target="page-info"
-    		title="Page Info"
-  		>
-			Built with Svelte and Bootstrap 5.0<br>
-			Implemented using Typescript and Sveltestrap
-  		</Popover>
+		UUIDTool <Badge class="badge-pill">V 0.7</Badge>
+		<Icon id="page-info" name="info-square"/>
+			<Popover
+				trigger="hover"
+				placement="right"
+				target="page-info"
+				title="Tool Info"
+			>
+				Built with Svelte and Bootstrap 5.0<br>
+				Implemented using Typescript and Sveltestrap
+			</Popover>
 	</NavbarBrand>
 </Navbar>
 

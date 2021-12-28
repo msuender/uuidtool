@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   // @ts-ignore
   import { Alert, Container, Row, Col, Button, FormGroup, Input, Label } from "sveltestrap";
   
