@@ -1,6 +1,6 @@
-<script lang="typescript">
+<script lang="ts">
 	import { Navbar, NavbarBrand, Badge, Icon, Popover} from "sveltestrap";
-	import Jsoninput from './Jsoninput.svelte';
+	import Toolbody from './components/Toolbody.svelte';
 </script>
 
 <style>
@@ -19,12 +19,12 @@
 				title="Tool Info"
 			>
 				Built with Svelte and Bootstrap 5.0<br>
-				Implemented using Typescript and Sveltestrap
+				Implemented using Typescript and Sveltestrap.
 			</Popover>
 	</NavbarBrand>
 </Navbar>
 
-<Jsoninput/>
+<Toolbody/>
 
 <svelte:head>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.1/dist/cosmo/bootstrap.min.css"/>

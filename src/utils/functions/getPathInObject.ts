@@ -3,7 +3,7 @@ const uuidV4Regex = RegExp('^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-
 
 const isValidV4UUID = (uuid: string) => uuidV4Regex.test(uuid);
 
-export const getValuePathInObject = (obj: object, maxDeepLevel: number, currDeepLevel?: number): any[] => {
+export const getPathInObject = (obj: object, maxDeepLevel: number, currDeepLevel?: number): any[] => {
     
     maxDeepLevel = ( maxDeepLevel || maxDeepLevel == 0 ) ? maxDeepLevel : 20;
     currDeepLevel = currDeepLevel ? currDeepLevel : 1 ;
@@ -19,7 +19,7 @@ export const getValuePathInObject = (obj: object, maxDeepLevel: number, currDeep
             
             if( typeof currElem == "object" ){ // object is "object" and "array" is also in the eyes of "typeof"
 
-                var deepPaths = getValuePathInObject( currElem, maxDeepLevel, currDeepLevel + 1)
+                var deepPaths = getPathInObject( currElem, maxDeepLevel, currDeepLevel + 1)
                 
                 for (var e=0 ; e<deepPaths.length ; e++){
 
@@ -30,7 +30,7 @@ export const getValuePathInObject = (obj: object, maxDeepLevel: number, currDeep
             } else { // not an object, check if UUID
 
                 if (isValidV4UUID(currElem) ){ 
-                    // return the element and its valud
+                    // return the element and its value
                     paths.push( curr + ';;' + currElem );
                 }
             }
