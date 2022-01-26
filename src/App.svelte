@@ -1,6 +1,6 @@
-<script lang="typescript">
+<script lang="ts">
 	import { Navbar, NavbarBrand, Badge, Icon, Popover} from "sveltestrap";
-	import Jsoninput from './Jsoninput.svelte';
+	import Toolbody from './components/Toolbody.svelte';
 </script>
 
 <style>
@@ -10,21 +10,21 @@
 
 <Navbar color="primary" dark expand="md">
 	<NavbarBrand>
-		UUIDTool <Badge class="badge-pill">V0.6</Badge>
-		<Icon id="page-info" name="info-circle"/>
-		<Popover
-    		trigger="hover"
-    		placement="right"
-    		target="page-info"
-    		title="Page Info"
-  		>
-			Built with Svelte and Bootstrap 5.0<br>
-			Implemented using Typescript and Sveltestrap
-  		</Popover>
+		UUIDTool <Badge class="badge-pill">V 0.7</Badge>
+		<Icon id="page-info" name="info-square"/>
+			<Popover
+				trigger="hover"
+				placement="right"
+				target="page-info"
+				title="Tool Info"
+			>
+				Built with Svelte and Bootstrap 5.0<br>
+				Implemented using Typescript and Sveltestrap.
+			</Popover>
 	</NavbarBrand>
 </Navbar>
 
-<Jsoninput/>
+<Toolbody/>
 
 <svelte:head>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.1/dist/cosmo/bootstrap.min.css"/>
