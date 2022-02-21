@@ -1,13 +1,15 @@
 <script lang="ts">
- // @ts-ignore
- import { Table, Badge, Input } from "sveltestrap";
+// @ts-ignore
+import { Table, Badge, Input } from "sveltestrap";
 
-import type {IResultSet, ISearchResult} from '../utils/definitions/type_definitions';
+import type {IResultSet} from '../utils/definitions/type_definitions';
 
 export let searchResultsFromParent = {} as IResultSet;
 export let uuidsToReplaceToParent: string[] = [];
 
 let searchResultsArray;
+let selectAll = false;
+let itemsSelected = false;
 
 const serachResultsToArray = (inputArray: IResultSet): IResultSet[] => {
     let tempArray = [];
@@ -20,6 +22,9 @@ $: {
 }
 
 const uuidSelectionFun = (workArray: string[], uuid: string): string[] => {
+
+    if (selectAll) selectAll = false;
+
     if (workArray.includes(uuid)) {
         workArray = workArray.filter(element => element !== uuid);
     } else {
@@ -32,6 +37,17 @@ const handleUuidSelectionFun = (clickedUuid: string): void => {
     uuidsToReplaceToParent = uuidSelectionFun(uuidsToReplaceToParent,clickedUuid);
 }
 
+const allSelectionFun = (uuidList, allToSelect: boolean) => {
+    let tempUuidList = [];
+    if (allToSelect) uuidList.forEach((resultItem) => tempUuidList.push(resultItem.uuid));
+    return tempUuidList;
+}
+
+const handleAllSelectionFun = (): void => {
+    selectAll = !selectAll;
+    itemsSelected = selectAll;
+    uuidsToReplaceToParent = allSelectionFun(searchResultsArray,selectAll)
+}
 
 </script>
 
@@ -42,7 +58,15 @@ const handleUuidSelectionFun = (clickedUuid: string): void => {
 <Table striped>
     <thead>
         <tr>
-            <th style="width: 5%;">Select</th>
+            <th style="width: 5%;">
+                <Input
+                    id="tickAll"
+                    type="checkbox"
+                    on:change={() => handleAllSelectionFun()}
+                    bind:checked={selectAll}
+                    disabled={searchResultsArray.lenght === 0}
+                />
+            </th>
             <th style="width: 25%;">UUID</th>
             <th style="width: 70%;">Found in</th>
         </tr>
@@ -51,7 +75,12 @@ const handleUuidSelectionFun = (clickedUuid: string): void => {
         {#each searchResultsArray as searchResultItem}
             <tr>
                 <td>
-                    <Input id={searchResultItem.uuid} type="checkbox" on:change={()=>handleUuidSelectionFun(searchResultItem.uuid)}/>
+                    <Input 
+                        id={searchResultItem.uuid}
+                        type="checkbox"
+                        on:change={()=>handleUuidSelectionFun(searchResultItem.uuid)}
+                        checked={itemsSelected}
+                    />
                 </td>
                 <td class='font-monospace'><Badge color="secondary">{searchResultItem.uuid}</Badge></td>
                 <td>
