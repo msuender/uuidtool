@@ -111,7 +111,13 @@ let findUuidsChild;
                 color="primary"
                 disabled={!allInputTextIsJson}
                 on:click={findUuidsChild.findUuidsFun}
-            ><Icon name="search"/> Find UUIDs
+                ><Icon name="search"/> Find UUIDs
+            </Button>
+            <Button 
+                color="secondary"
+                on:click={() => recordUpdateFun(ETypeOfUpdate.clear)}
+                on:click={findUuidsChild.clearResults}
+                ><Icon name="trash"/> Clear all
             </Button>
         </Col>
         <Col>
@@ -119,14 +125,10 @@ let findUuidsChild;
                 outline
                 color="success"
                 on:click={addDataRecordFun}
-            ><Icon name="plus-square"/> Add Input Section
+                class="float-end"
+                ><Icon name="plus-square"/> Add Input Section
             </Button>
-            <Button 
-                color="secondary"
-                on:click={() => recordUpdateFun(ETypeOfUpdate.clear)}
-                on:click={findUuidsChild.clearResults}
-            ><Icon name="trash"/> Clear all
-            </Button>
+
         </Col>
     </Row>
 </Container>

@@ -52,6 +52,7 @@
                 on:click={removeRecordFun} 
                 color="info"
                 size="sm"
+                class="float-end"
                 ><Icon name="dash-square"/> Remove section
             </Button>
         </Col>
