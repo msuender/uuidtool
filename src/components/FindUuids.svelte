@@ -49,8 +49,8 @@ const replaceDataInRecordsFun = () => {
 
 <Container>
     <Row>
-        <Col class="mt-3">
-            <h5>{Object.keys(searchResults).length} UUIDs found</h5>
+        <Col class="mt-2">
+            <h6><Badge color="dark">{Object.keys(searchResults).length}</Badge> UUIDs found</h6>
             <Alert
                 color="warning"
                 isOpen={noUuidsFoundAlertVisible} 
@@ -66,7 +66,7 @@ const replaceDataInRecordsFun = () => {
     <Row class="mt-3">
         <Col>
             <Button
-                color="success"
+                color="primary"
                 disabled={uuidsToReplaceFromChild.length === 0} 
                 on:click={replaceDataInRecordsFun} 
             >Replace
