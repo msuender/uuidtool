@@ -10,7 +10,7 @@
 
 <Navbar color="primary" dark expand="md">
 	<NavbarBrand>
-		UUIDTool <Badge class="badge-pill">V 0.7</Badge>
+		UUIDTool <Badge class="badge-pill">V1.0</Badge>
 		<Icon id="page-info" name="info-square"/>
 			<Popover
 				trigger="hover"
