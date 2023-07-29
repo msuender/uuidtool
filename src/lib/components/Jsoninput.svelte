@@ -1,5 +1,5 @@
 <script lang="ts">
-  // @ts-ignore
+
   import { Container, Button, Badge, Row, Col, FormGroup, Icon, Input, Label } from "sveltestrap";
   
   export let recordId = 0;
@@ -24,10 +24,6 @@
   }
 
 </script>
-
-<style>
-
-</style>
 
 <Container>
     <Row>
