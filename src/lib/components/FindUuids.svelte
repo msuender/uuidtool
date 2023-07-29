@@ -43,10 +43,6 @@ const replaceDataInRecordsFun = () => {
 
 </script>
 
-<style>
-
-</style>
-
 <Container>
     <Row>
         <Col class="mt-2">

@@ -1,73 +1,68 @@
 <script lang="ts">
-  // @ts-ignore
-  import { Container, Row, Col, Button, Icon } from 'sveltestrap';
+
+    import { Container, Row, Col, Button, Icon } from 'sveltestrap';
   
-  import Jsoninput from './Jsoninput.svelte';
-  import FindUuids from './FindUuids.svelte';
-  import {findMaxId,checkAllIsJson} from '../utils/functions/dataRecordUtils';
-  import type {IDataRecord} from '../utils/definitions/type_definitions';
-  import {ETypeOfUpdate} from '../utils/definitions/enums';
-  import {sampleData} from '../utils/data/sampledata';
+    import Jsoninput from './Jsoninput.svelte';
+    import FindUuids from './FindUuids.svelte';
+    import {findMaxId,checkAllIsJson} from '../utils/functions/dataRecordUtils';
+    import type {IDataRecord} from '../utils/definitions/type_definitions';
+    import {ETypeOfUpdate} from '../utils/definitions/enums';
+    import {sampleData} from '../utils/data/sampledata';
   
 
-let dataRecords: IDataRecord[] = [
-    {
-        "id": 1,
-        "inputText": "",
-        "outputText": "",
-        "inputIsJson": false
+    let dataRecords: IDataRecord[] = [
+        {
+            "id": 1,
+            "inputText": "",
+            "outputText": "",
+            "inputIsJson": false
+        }
+    ]
+
+    $: maxDataRecordId = findMaxId(dataRecords);
+
+    const addDataRecordFun = async () => {
+        let newDataRecord = {
+            "id": maxDataRecordId + 1,
+            "inputText": "",
+            "outputText": "",
+            "inputIsJson": false
+        }
+
+        dataRecords = [...dataRecords, newDataRecord];
     }
-]
 
-$: maxDataRecordId = findMaxId(dataRecords);
-
-const addDataRecordFun = async () => {
-    let newDataRecord = {
-        "id": maxDataRecordId + 1,
-        "inputText": "",
-        "outputText": "",
-        "inputIsJson": false
+    const removeDataRecordFun = async (dataRecordId: number) => {
+        dataRecords = dataRecords.filter (element => element.id !== dataRecordId)
     }
 
-    dataRecords = [...dataRecords, newDataRecord];
-}
+    $: isOnlyOneDataRecordLeft = dataRecords.length === 1 ? true : false;
 
-const removeDataRecordFun = async (dataRecordId: number) => {
-    dataRecords = dataRecords.filter (element => element.id !== dataRecordId)
-}
+    $: allInputTextIsJson = checkAllIsJson(dataRecords);
 
-$: isOnlyOneDataRecordLeft = dataRecords.length === 1 ? true : false;
-
-$: allInputTextIsJson = checkAllIsJson(dataRecords);
-
-const recordUpdateFun = (typeOfUpdate: ETypeOfUpdate) => {
-    for (const [index,data] of dataRecords.entries()) {
-        switch(typeOfUpdate) {
-            case 'sampleData':
-                if (sampleData[index]) dataRecords[index].inputText = JSON.stringify(sampleData[index],null,2);
-                break;
-            case 'clear':
-                dataRecords[index].inputText = "";
-                dataRecords[index].outputText="";
-                break;
-            case 'copy':
-                dataRecords[index].inputText = dataRecords[index].outputText;
-                dataRecords[index].outputText="";
-                break;
-            default:
-                window.alert('Missing typeOfUpdate in recordUpdateFun');
+    const recordUpdateFun = (typeOfUpdate: ETypeOfUpdate) => {
+        for (const [index,data] of dataRecords.entries()) {
+            switch(typeOfUpdate) {
+                case 'sampleData':
+                    if (sampleData[index]) dataRecords[index].inputText = JSON.stringify(sampleData[index],null,2);
+                    break;
+                case 'clear':
+                    dataRecords[index].inputText = "";
+                    dataRecords[index].outputText="";
+                    break;
+                case 'copy':
+                    dataRecords[index].inputText = dataRecords[index].outputText;
+                    dataRecords[index].outputText="";
+                    break;
+                default:
+                    window.alert('Missing typeOfUpdate in recordUpdateFun');
+            }
         }
     }
-}
 
-let findUuidsChild;
+    let findUuidsChild;
 
 </script>
-
-<style>
-/* textarea is styed by class "text-monospace" */
-
-</style>
 
 <Container class="mt-3">
     <Row>

@@ -52,9 +52,6 @@ const handleAllSelectionFun = (): void => {
 </script>
 
 
-<style>    
-</style>
-
 <Table striped>
     <thead>
         <tr>

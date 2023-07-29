@@ -25,10 +25,6 @@
 
 </script>
 
-<style>
-
-</style>
-
 <Container>
     <Row>
         <Col>
