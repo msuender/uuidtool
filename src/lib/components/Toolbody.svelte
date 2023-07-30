@@ -134,5 +134,3 @@
     bind:dataRecordsFromParent={dataRecords}
     bind:this={findUuidsChild}
 />
-
-<!-- new content stops here -------------------------------------------------->
