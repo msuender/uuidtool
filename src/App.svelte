@@ -1,5 +1,4 @@
 <script lang="ts">
-<script lang="ts">
 	import { Navbar, NavbarBrand, Badge, Icon, Popover} from "sveltestrap";
 	import Toolbody from './lib/components/Toolbody.svelte';
 </script>
