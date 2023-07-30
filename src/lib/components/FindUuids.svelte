@@ -1,5 +1,5 @@
 <script lang="ts">
-// @ts-ignore
+
 import { Container, Col, Row, Alert, Button, Badge} from 'sveltestrap';
 import { fade } from 'svelte/transition';
 import {findUuidsInObject} from '../utils/functions/findUuidsInObject';
@@ -42,10 +42,6 @@ const replaceDataInRecordsFun = () => {
 }
 
 </script>
-
-<style>
-
-</style>
 
 <Container>
     <Row>

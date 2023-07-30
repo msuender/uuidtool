@@ -1,5 +1,5 @@
 <script lang="ts">
-// @ts-ignore
+
 import { Table, Badge, Input } from "sveltestrap";
 
 import type {IResultSet} from '../utils/definitions/type_definitions';
@@ -51,9 +51,6 @@ const handleAllSelectionFun = (): void => {
 
 </script>
 
-
-<style>    
-</style>
 
 <Table striped>
     <thead>
