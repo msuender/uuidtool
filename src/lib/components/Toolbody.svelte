@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import { Container, Row, Col, Button, Icon } from 'sveltestrap';
+    import { Container, Row, Col, Button, Icon } from '@sveltestrap/sveltestrap';
   
     import Jsoninput from './Jsoninput.svelte';
     import FindUuids from './FindUuids.svelte';

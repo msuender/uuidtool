@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import { Container, Col, Row, Alert, Button, Badge} from 'sveltestrap';
+import { Container, Col, Row, Alert, Button, Badge} from '@sveltestrap/sveltestrap';
 import { fade } from 'svelte/transition';
 import {findUuidsInObject} from '../utils/functions/findUuidsInObject';
 import {replaceUuids} from '../utils/functions/replaceUuids';
