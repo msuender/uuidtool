@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import { Table, Badge, Input } from "sveltestrap";
+import { Table, Badge, Input } from "@sveltestrap/sveltestrap";
 
 import type {IResultSet} from '../utils/definitions/type_definitions';
 

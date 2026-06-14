@@ -1,6 +1,6 @@
 <script lang="ts">
 
-  import { Container, Button, Badge, Row, Col, FormGroup, Icon, Input, Label } from "sveltestrap";
+  import { Container, Button, Badge, Row, Col, FormGroup, Icon, Input, Label } from "@sveltestrap/sveltestrap";
   
   export let recordId = 0;
   export let inputText = '';
